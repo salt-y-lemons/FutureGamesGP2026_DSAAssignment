@@ -1,0 +1,13 @@
+<!--
+Source - https://stackoverflow.com/a/61434565
+Posted by meziantou, modified by community. See post 'Timeline' for change history
+Retrieved 2026-10-20, License - CC BY-SA 4.0
+-->
+
+<Project>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <!--<LangVersion>preview</LangVersion>-->
+    <!--<LangVersion>7.3</LangVersion>-->
+  </PropertyGroup>
+</Project>
