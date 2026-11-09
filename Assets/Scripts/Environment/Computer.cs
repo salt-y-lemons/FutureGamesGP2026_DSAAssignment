@@ -1,6 +1,5 @@
 ﻿using Environment.Tasks;
-using System.Linq;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 namespace Environment {
@@ -8,24 +7,30 @@ namespace Environment {
 
         [SerializeField] private GenericQueue<Task> tasks = new(); // Put your stack/queue here :)
         [SerializeField] private Task myTask;
-        [SerializeField] private TextAsset employeeJSON;
-
-        private void Awake() {
-            EmployeeData data = JsonUtility.FromJson<EmployeeData>(employeeJSON.text);
-            tasks.Enqueue(data.ConvertTo<Task>());
-        }
 
         [System.Serializable]
-        public class EmployeeData() {
+        public class EmployeeData {
             public string name;
             public int employeeId;
-            public bool hasEngineInEngineRoom;
+            public bool hasEngineRoomClearance;
             public string lastEntranceInEngineRoom;
             public string lastExitFromEngineRoom;
+
+            public static implicit operator int(EmployeeData v) {
+                throw new NotImplementedException();
+            }
+        }
+
+        public class Employees {
+            public EmployeeData[] employees;
         }
 
         public void OnInteract() {
-            tasks.Dequeue().Execute();
+            //tasks.Dequeue().Execute();
+            int length = tasks.Length();
+            for (int i = 0; i < length; i++) {
+                tasks.Dequeue().Execute();
+            }
         }
     }
 }

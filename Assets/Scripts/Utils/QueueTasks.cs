@@ -27,6 +27,11 @@ public class GenericQueue<Type> {
         return topOfQueue;
     }
 
-    public void Clear() => queue.Clear(); 
+    public void Clear() => queue.Clear();
+
+    public int Length() {
+        Debug.Log("Count = " + queue.Count);
+        return queue.Count;
+    }
 }
 
